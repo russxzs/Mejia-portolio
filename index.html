@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Mejia </title>
+    <style>
+        /* Reset and base styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* lock scrolling */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a; /* dark background */
+            color: #f0f0f0;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #ff6f61, #ffde59, #6eff91);
+            animation: bgMove 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(-25%, -25%); }
+            100% { transform: translate(0,0); }
+        }
+
+        /* Page container */
+        .page {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden; /* ensures no scrollbars inside pages */
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Images */
+        img {
+            max-width: 300px;
+            margin: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        img:hover {
+            transform: scale(1.5);
+            z-index: 10;
+        }
+
+        /* Text styling */
+        h1, h2, h3 {
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* Buttons */
+        .nav-button {
+            position: absolute;
+            bottom: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #f0f0f0;
+            color: #f0f0f0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .next {
+            right: 30px;
+        }
+
+        .prev {
+            left: 30px;
+        }
+
+        /* About me layout */
+        .home-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .home-content img {
+            max-width: 250px;
+            border-radius: 15px;
+        }
+
+        /* Educational background layout */
+        .education-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 12px; /* slightly smaller than before */
+        }
+
+        .education-item img {
+            max-width: 80px;
+        }
+
+        /* Page 2: Educational background smaller line spacing */
+        #page2 h1, 
+        #page2 h2, 
+        #page2 h3 {
+            margin-bottom: 5px; /* even smaller spacing */
+            line-height: 1.2; /* tighter line spacing */
+        }
+
+        #page2 p {
+            margin-bottom: 3px; /* smaller spacing */
+            line-height: 1.2; /* tighter line spacing */
+        }
+
+        /* Achievements layout */
+        .achievements {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .achievement-item {
+            text-align: center;
+        }
+
+        /* Family layout with bigger images */
+        .family {
+            display: flex;
+            justify-content: center;
+            gap: 60px; /* increased spacing */
+            flex-wrap: wrap;
+        }
+
+        .family-item {
+            text-align: center;
+            max-width: 300px; /* bigger container */
+        }
+
+        .family-item img {
+            max-width: 280px; /* bigger images */
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .family-item img:hover {
+            transform: scale(1.5);
+            z-index: 10;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Home -->
+    <div class="page active" id="page1">
+        <div class="home-content">
+            <img src="pictures/Home.jpg.jpeg" alt="Russ's Photo">
+            <div>
+                <h1>Hi I'm Russel, Welcome to My Portfolio</h1>
+                <h2>About Me</h2>
+                <p>I’m an IT student focused on networking and security. I like configuring networks, studying cyber threats, and learning how to keep systems protected. I aim to develop strong technical skills and eventually work in the cybersecurity or network administration field.</p>
+                
+            </div>
+        </div>
+        <button class="nav-button next" onclick="showPage(2)">Next</button>
+    </div>
+
+    <!-- Page 2: Educational Background -->
+    <div class="page" id="page2">
+        <h1>Educational Background</h1>
+
+        <div class="education-item">
+            <div>
+                <h2>College</h2>
+                <p>UNIVERSITY OF THE CORDILLERAS Pursuing BS in Information Technology, major in Network and Security</p>
+            </div>
+            <img src="pictures/UC Logo.png.jpeg"alt="UC Logo">
+        </div>
+
+        <div class="education-item">
+            <div>
+                <h2>Senior High School</h2>
+                <p>UNIVERSITY OF THE CORDILLERAS - Home Economics Strand 2022-2024</p>
+            </div>
+            <img src="pictures/UC Logo.png.jpeg" alt="UC Logo">
+        </div>
+
+        <div class="education-item">
+            <div>
+                <h2>Junior High School</h2>
+                <p>ROXAS NATIONAL HIGH SCHOOL (2018-2022)</p>
+            </div>
+            <img src="pictures/rnhs.jpeg"alt="rnhs">
+        </div>
+
+        <div class="education-item">
+            <div>
+            <h2>Elementary</h2>
+            <p>SAINT LOUIS SCHOOL CENTER (2012-2018)</p>
+        </div>
+            <img src="pictures/images.jpeg"alt="rnhs">
+        </div>
+
+        <button class="nav-button prev" onclick="showPage(1)">Previous</button>
+        <button class="nav-button next" onclick="showPage(3)">Next</button>
+    </div>
+
+    <!-- Page 3: Achievements -->
+    <div class="page" id="page3">
+        <h1>Achievements</h1>
+        <div class="achievements">
+            <div class="achievement-item">
+                <img src="pictures/c.jpg.jpg" alt="Elementary Graduation">
+                <p>ELEMENTARY GRADUATION</p>
+            </div>
+            <div class="achievement-item">
+                <img src="pictures/rnhs.jpg.jpg" alt="Junior High School Graduation">
+                <p>JUNIOR HIGH SCHOOL GRADUATION</p>
+            </div>
+            <div class="achievement-item">
+                <img src="pictures/a.jpg.jpg" alt="Senior High School Graduation">
+                <p>SENIOR HIGH SCHOOL GRADUATION</p>
+            </div>
+            <div class="achievement-item">
+                <img src="pictures/altaj.jpg.jpg"alt="ALTAJ">
+                <p>CERTIFICATE OF ACHIEVEMENT</p>
+            </div>
+            <div class="achievement-item">
+                <img src="pictures/yeye.jpg.jpg" alt="Bronze Medalist">
+                <p>CERTIFICATE OF RECOGNITION</p>
+            </div>
+            
+        </div>
+        <button class="nav-button prev" onclick="showPage(2)">Previous</button>
+        <button class="nav-button next" onclick="showPage(4)">Next</button>
+    </div>
+
+    <!-- Page 4: My Family -->
+    <div class="page" id="page4">
+        <h1>My Family</h1>
+        <div class="family">
+            <div class="family-item">
+                <h2>HUGGING MY MOM</h2>
+                <img src="pictures/hug.jpg.png" alt="Mother">
+                <p>Mom, thank you for your unwavering support, encouragement, and countless sacrifices. This portfolio is a reflection of the foundation you helped me build.</p>
+            </div>
+            <div class="family-item">
+                <h2>SHAKING THE HANDS OF MY DAD</h2>
+                <img src="pictures/pops.jpg.png" alt="Father">
+                <p>My handsome and responsible father, He cared and help me in anyway. He is a very good father and a good Role Model too.</p>
+            </div>
+            <div class="family-item">
+                <h2>MY FRIEND</h2>
+                <img src="pictures/earl.jpg.jpeg" alt="Friends">
+                <p>To my buddy, Thanks for always having my back and being the realest since day one.</p>
+            </div>
+        </div>
+        <button class="nav-button prev" onclick="showPage(3)">Previous</button>
+    </div>
+
+    <script>
+        function showPage(pageNumber) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById('page' + pageNumber).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
